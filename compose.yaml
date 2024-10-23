@@ -1,0 +1,21 @@
+
+services:
+  frontend:
+    container_name: audio_frontend
+    build: 
+      context: ./frontend
+    ports:
+      - "5173:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/src:/app/src
+
+  backend:
+    container_name: audio_backend
+    build: 
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/files:/app/files
